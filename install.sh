@@ -8,6 +8,15 @@ sudo sed -i "/^[^#]*PasswordAuthentication[[:space:]]no/c\PasswordAuthentication
 echo 'ClientAliveInterval 60' | sudo tee -a /etc/ssh/sshd_config
 sudo service sshd restart
 
+### another options
+#sed 's/PasswordAuthentication no/PasswordAuthentication yes/' -i /etc/ssh/sshd_config
+#systemctl restart sshd
+#service sshd restart
+
+#TODO: replace bob with your desired username
+useradd idaemon
+echo "thaigaming" | passwd --stdin bob
+
 ### create swap file edit the size 1g=2g 2g=2g 4g=4g
 sudo fallocate -l 2G /swapfile
 sudo chmod 600 /swapfile
