@@ -26,7 +26,23 @@ cp /etc/fstab /etc/fstab_$(date +%Y%m%d%H%M%S)
 echo '/swapfile none swap sw 0 0' | sudo tee -a /etc/fstab
 echo 'vm.swappiness=10' | sudo tee -a /etc/sysctl.conf
 
-sed -i '/^#PasswordAuthentication/s/yes/no/' /etc/ssh/sshd_config
-
 
 timedatectl set-timezone Asia/Bangkok
+
+### redis recommended
+I set it up very easily.
+1. Ensure Redis is up and running
+2. Enable Redis via the WordPress plugin, only setting I had to change was password because I use requirepass
+Additionally, I’d recommend these settings in redis.conf:
+maxmemory 100mb maxmemory-policy allkeys-lru maxmemory-samples 10 appendonly yes
+and disable snapshotting, comment out the lines beginning with “save” to do this, for example,
+#save 900 1 #save 300 10 #save 60 10000
+I’d also add vm.overcommit_memory = 1 to /etc/sysctl.conf.
+Also disable transparent huge pages, echo never > /sys/kernel/mm/transparent_hugepage/enabled
+
+
+### CYBERPANEL BACKUP AFTER SETUP GOOGLE
+/usr/local/CyberCP/bin/python /usr/local/CyberCP/IncBackups/IncScheduler.py Weekly
+
+
+
