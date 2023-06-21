@@ -46,3 +46,42 @@ Also disable transparent huge pages, echo never > /sys/kernel/mm/transparent_h
 
 
 
+### MEMCACHE
+What you should know is that LiteSpeed ​​has its own Memcached server which is optimized
+
+Before starting the installation, test using the telnet command if Memecached is installed and functional:
+
+telnet 127.0.0.1 11211
+If the return of the command is telnet: Unable to connect to remote host: Connection refused, it means that the Memcached server is not available.
+
+Install dependencies:
+
+sudo apt-get install git build-essential zlib1g-dev libexpat1-dev openssl libssl-dev libsasl2-dev libpcre3-dev -y
+Download LiteSpeed ​​Memcached:
+
+sudo wget https://github.com/litespeedtech/lsmcd/archive/master.zip
+Unzip the archive:
+
+sudo unzip master.zip
+Go to the sources folder:
+
+cd lsmcd-master
+Prepare, compile and install LSMCD using the following commands:
+
+sudo./fixtimestamp.sh
+sudo./configure CFLAGS=" -O3" CXXFLAGS=" -O3"
+sudo make
+sudo make install
+Start the service:
+
+sudo systemctl start lsmcd
+Activate automatic start:
+
+sudo systemctl enable lsmcd
+Check the service:
+
+sudo systemctl status lsmcd.service
+You can also re-test with telnet.
+
+
+
