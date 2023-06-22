@@ -4,6 +4,10 @@ sudo apt update && sudo apt upgrade -y
 
 ## APT PROBLEM TRUST KEY
 sudo cp /etc/apt/trusted.gpg /etc/apt/trusted.gpg.d
+## APT UNLINK
+sudo rm -rf /var/lib/apt/lists
+sudo apt-get update
+
 
 ### messing with ssh
 sudo sed -i "/^[^#]*PasswordAuthentication[[:space:]]no/c\PasswordAuthentication yes" /etc/ssh/sshd_config
