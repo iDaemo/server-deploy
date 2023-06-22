@@ -2,6 +2,9 @@
 ### upgrade everything
 sudo apt update && sudo apt upgrade -y
 
+## APT PROBLEM TRUST KEY
+sudo cp /etc/apt/trusted.gpg /etc/apt/trusted.gpg.d
+
 ### messing with ssh
 sudo sed -i "/^[^#]*PasswordAuthentication[[:space:]]no/c\PasswordAuthentication yes" /etc/ssh/sshd_config
 #sudo sed -i "/^[^#]*ClientAliveInterval[[:space:]]0/c\ClientAliveInterval 60" /etc/ssh/sshd_config
