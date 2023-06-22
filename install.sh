@@ -106,12 +106,14 @@ I’d also add vm.overcommit_memory = 1 to /etc/sysctl.conf.
 
 Also disable transparent huge pages,
 echo never > /sys/kernel/mm/transparent_hugepage/enabled
+
+### edit /etc/redis/redis.conf
 # create a unix domain socket to listen on
-unixsocket /var/run/redis/redis.sock
+unixsocket /run/redis/redis.sock
 # set permissions for the socket
 unixsocketperm 775
 #requirepass passwordtouse
-bind 127.0.0.1
+#bind 127.0.0.1
 daemonize yes
 stop-writes-on-bgsave-error no
 rdbcompression yes
