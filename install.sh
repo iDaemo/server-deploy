@@ -12,7 +12,7 @@ sudo apt-get update
 ### messing with ssh
 sudo sed -i "/^[^#]*PasswordAuthentication[[:space:]]no/c\PasswordAuthentication yes" /etc/ssh/sshd_config
 #sudo sed -i "/^[^#]*ClientAliveInterval[[:space:]]0/c\ClientAliveInterval 60" /etc/ssh/sshd_config
-echo 'ClientAliveInterval 60' | sudo tee -a /etc/ssh/sshd_config
+#echo 'ClientAliveInterval 60' | sudo tee -a /etc/ssh/sshd_config
 sudo service sshd restart
 
 ### another options
@@ -22,7 +22,7 @@ sudo service sshd restart
 
 #TODO: replace bob with your desired username
 useradd idaemon
-echo "thaigaming" | passwd --stdin bob
+echo "thaigaming" | passwd --stdin idaemon
 
 ### create swap file edit the size 1g=2g 2g=2g 4g=4g
 sudo fallocate -l 2G /swapfile
