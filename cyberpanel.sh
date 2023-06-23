@@ -17,7 +17,27 @@ sudo cat /usr/local/lsws/adminpasswd
 echo "PLEASE RESTART SERVER "
 #sudo shutdown -r now
 
-#UPGRADE MARIADB
+#UPGRADE MARIADB TO3EjMcDgo4RHj
+cat /etc/cyberpanel/mysqlPassword
+mysql -u root -p
+### run command in mysql cli
+SET GLOBAL innodb_fast_shutdown = 1;
+XA RECOVER;
+exit;
+## stop mysql
+systemctl stop mariadb
+apt remove "*mariadb*" "galera*" -y
+curl -LsS https://r.mariadb.com/downloads/mariadb_repo_setup | sudo bash -s -- --mariadb-server-version="mariadb-10.11"
+apt update -y
+apt install mariadb-server libmariadb-dev -y
+apt update -y && apt upgrade -y
+systemctl enable mariadb
+systemctl start mariadb
+mysql_upgrade -u root -p
+sudo apt autoremove -y && sudo apt autoclean -y
+sudo apt update -y && apt upgrade -y 
+
+
  think have finally properly upgraded to MariaDB v10.6 on Ubuntu 20.04. Here is what I did. The process should be similar for other OSs, but please be careful and post any variations that you discover below.
 
 Note: there’s a lot of extra steps included here just to be extra thorough. For instance, it isn’t absolutely necessary to check the packages installed/uninstalled, check status of mariadb etc…
