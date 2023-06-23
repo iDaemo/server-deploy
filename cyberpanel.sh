@@ -11,4 +11,4 @@ sudo sed -i "/^[^#]*PasswordAuthentication[[:space:]]no/c\PasswordAuthentication
 sudo service sshd restart
 echo "   "
 echo " DONE "
-sh <(curl https://cyberpanel.net/install.sh -v ols -p thaigaming -a -m)
+sh <(curl https://cyberpanel.net/install.sh -v ols -p thaigaming -a -m || wget -O - https://cyberpanel.net/install.sh -v ols -p thaigaming -a -m)
