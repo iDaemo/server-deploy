@@ -16,3 +16,7 @@ sh <(curl https://cyberpanel.net/install.sh || wget -O - https://cyberpanel.net/
 sudo cat /usr/local/lsws/adminpasswd 
 echo "PLEASE RESTART SERVER "
 #sudo shutdown -r now
+
+
+#upgrade
+sh <(curl https://raw.githubusercontent.com/usmannasir/cyberpanel/stable/preUpgrade.sh || wget -O - https://raw.githubusercontent.com/usmannasir/cyberpanel/stable/preUpgrade.sh)
