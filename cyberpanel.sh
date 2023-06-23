@@ -9,6 +9,7 @@ echo "idaemon:thaigaming" | sudo chpasswd
 usermod -aG sudo idaemon
 sudo sed -i "/^[^#]*PasswordAuthentication[[:space:]]no/c\PasswordAuthentication yes" /etc/ssh/sshd_config
 sudo service sshd restart
+sudo apt autoremove -y
 echo "   "
 echo " DONE "
 sh <(curl https://cyberpanel.net/install.sh -v ols -p thaigaming -a -m || wget -O - https://cyberpanel.net/install.sh -v ols -p thaigaming -a -m)
