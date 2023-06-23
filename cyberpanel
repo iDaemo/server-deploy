@@ -1,0 +1,6 @@
+#!/bin/bash
+sudo apt update && sudo apt upgrade -y
+apt install cron
+apt install iputils-ping 
+apt install cron
+timedatectl set-timezone Asia/Bangkok
