@@ -13,5 +13,6 @@ sudo apt autoremove -y
 echo " DONE "
 #sh <(curl https://cyberpanel.net/install.sh -v ols -p thaigaming -a -m || wget -O - https://cyberpanel.net/install.sh -v ols -p thaigaming -a -m)
 sh <(curl https://cyberpanel.net/install.sh || wget -O - https://cyberpanel.net/install.sh) -v ols -p thaigaming -a -m
-echo " RESTART SERVER "
-sudo shutdown -r now
+sudo cat /usr/local/lsws/adminpasswd 
+echo "PLEASE RESTART SERVER "
+#sudo shutdown -r now
