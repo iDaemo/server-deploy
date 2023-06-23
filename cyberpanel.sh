@@ -86,10 +86,12 @@ Note: it might be worth upgrading CyberPanel after all of this. It is harmless, 
 sudo apt autoremove -y && sudo autoclean -y
 sudo apt update -y && apt upgrade -y 
 
+### upgrade phpmyadmin
+sh <(curl https://raw.githubusercontent.com/iDaemo/server-deploy/master/update-phpmyadmin.sh || wget -O - https://raw.githubusercontent.com/iDaemo/server-deploy/master/update-phpmyadmin.sh)
+
 #upgrade
 sh <(curl https://raw.githubusercontent.com/usmannasir/cyberpanel/stable/preUpgrade.sh || wget -O - https://raw.githubusercontent.com/usmannasir/cyberpanel/stable/preUpgrade.sh)
 
-### upgrade phpmyadmin
-sh <(curl https://raw.githubusercontent.com/iDaemo/server-deploy/master/update-phpmyadmin.sh || wget -O - https://raw.githubusercontent.com/iDaemo/server-deploy/master/update-phpmyadmin.sh)
+
 
 
