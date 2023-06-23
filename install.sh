@@ -41,9 +41,16 @@ I set it up very easily.
 1. Ensure Redis is up and running
 2. Enable Redis via the WordPress plugin, only setting I had to change was password because I use requirepass
 Additionally, I’d recommend these settings in redis.conf:
-maxmemory 100mb maxmemory-policy allkeys-lru maxmemory-samples 10 appendonly yes
+maxmemory 100mb 
+maxmemory-policy allkeys-lru
+maxmemory-samples 10
+appendonly yes
+
 and disable snapshotting, comment out the lines beginning with “save” to do this, for example,
-#save 900 1 #save 300 10 #save 60 10000
+#save 900 1
+#save 300 10
+#save 60 10000
+
 I’d also add vm.overcommit_memory = 1 to /etc/sysctl.conf.
 Also disable transparent huge pages, echo never > /sys/kernel/mm/transparent_hugepage/enabled
 
