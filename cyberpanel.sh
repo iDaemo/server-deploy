@@ -89,7 +89,7 @@ sudo apt update -y && apt upgrade -y
 ### upgrade phpmyadmin
 sh <(curl https://raw.githubusercontent.com/iDaemo/server-deploy/master/update-phpmyadmin.sh || wget -O - https://raw.githubusercontent.com/iDaemo/server-deploy/master/update-phpmyadmin.sh)
 
-#upgrade
+#upgrade the cyberpanel system again
 sh <(curl https://raw.githubusercontent.com/usmannasir/cyberpanel/stable/preUpgrade.sh || wget -O - https://raw.githubusercontent.com/usmannasir/cyberpanel/stable/preUpgrade.sh)
 
 
