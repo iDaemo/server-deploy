@@ -86,8 +86,20 @@ Note: it might be worth upgrading CyberPanel after all of this. It is harmless, 
 sudo apt autoremove -y && sudo autoclean -y
 sudo apt update -y && apt upgrade -y 
 
-sh <(curl https://raw.githubusercontent.com/usmannasir/cyberpanel/stable/preUpgrade.s
-
-
 #upgrade
 sh <(curl https://raw.githubusercontent.com/usmannasir/cyberpanel/stable/preUpgrade.sh || wget -O - https://raw.githubusercontent.com/usmannasir/cyberpanel/stable/preUpgrade.sh)
+
+### upgrade phpmyadmin
+cp -r /usr/local/CyberCP/public/phpmyadmin /usr/local/CyberCP/public/phpmyadmin.old
+rm -rf /usr/local/CyberCP/public/phpmyadmin
+wget https://files.phpmyadmin.net/phpMyAdmin/5.2.1/phpMyAdmin-5.2.1-all-languages.zip
+unzip phpMyAdmin-5.2.1-all-languages.zip
+mv phpMyAdmin-5.2.1-all-languages /usr/local/CyberCP/public/phpmyadmin
+cp -r /usr/local/CyberCP/public/phpmyadmin.old/config.inc.php /usr/local/CyberCP/public/phpmyadmin
+cp -r /usr/local/CyberCP/public/phpmyadmin.old/phpmyadminsignin.php /usr/local/CyberCP/public/phpmyadmin
+cp -r /usr/local/CyberCP/public/phpmyadmin.old/tmp /usr/local/CyberCP/public/phpmyadmin
+chown -R lscpd:lscpd /usr/local/CyberCP/public/phpmyadmin/tmp
+chmod -R 777 /usr/local/CyberCP/public/phpmyadmin/tmp/twig
+rm -rf /usr/local/CyberCP/public/phpmyadmin/tmp/twig/*
+rm -rf /usr/local/CyberCP/public/phpmyadmin.old
+
