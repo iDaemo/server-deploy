@@ -82,6 +82,10 @@ What mysql_upgrade really does in MariaDB, Part I 4
 enter password from previously
 Note: it might be worth upgrading CyberPanel after all of this. It is harmless, might pre-emptively fix any issues, and might even give you some minor updates that have not yet been included in an official release. Run
 
+###
+sudo apt autoremove -y && sudo autoclean -y
+sudo apt update -y && apt upgrade -y 
+
 sh <(curl https://raw.githubusercontent.com/usmannasir/cyberpanel/stable/preUpgrade.s
 
 
