@@ -129,3 +129,4 @@ maxmemory 50M
 # how redis will evice old objects - least recently used
 maxmemory-policy allkeys-lru
 
+echo 'echo never > /sys/kernel/mm/transparent_hugepage/enabled' | sudo tee -a /etc/rc.local
