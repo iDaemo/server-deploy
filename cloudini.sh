@@ -3,7 +3,7 @@ sudo timedatectl set-timezone Asia/Bangkok
 sudo apt update -y && sudo apt upgrade -y
 apt install cron
 apt install iputils-ping 
-apt install cron
+apt install nano
 #sudo useradd idaemon
 echo "$USER:thaigaming" | sudo chpasswd
 #usermod -aG sudo idaemon
