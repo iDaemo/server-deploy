@@ -1,6 +1,5 @@
 #!/bin/bash
 set -e
-
 sudo timedatectl set-timezone Asia/Bangkok
 sudo apt update -y && sudo apt upgrade -y
 sudo apt install cron
