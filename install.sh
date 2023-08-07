@@ -120,6 +120,7 @@ I’d also add vm.overcommit_memory = 1 to /etc/sysctl.conf.
 
 Also disable transparent huge pages,
 echo never > /sys/kernel/mm/transparent_hugepage/enabled
+echo 'echo never > /sys/kernel/mm/transparent_hugepage/enabled' | sudo tee -a /etc/rc.local
 
 ### edit /etc/redis/redis.conf
 # create a unix domain socket to listen on
@@ -136,4 +137,4 @@ maxmemory 50M
 # how redis will evice old objects - least recently used
 maxmemory-policy allkeys-lru
 
-echo 'echo never > /sys/kernel/mm/transparent_hugepage/enabled' | sudo tee -a /etc/rc.local
+
