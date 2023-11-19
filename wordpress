@@ -1,0 +1,10 @@
+##edit wp_config.php
+
+define('DISABLE_WP_CRON', true);
+
+##enable uniq key for cache
+define('WP_CACHE_KEY_SALT', 'oddperience.com');
+
+##edit cronjob
+
+*/5 * * * * wget -q -O - 'https://websiteedit.com/wp-cron.php?doing_wp_cron' >/dev/null 2>&1
