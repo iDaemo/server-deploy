@@ -8,3 +8,11 @@ define('WP_CACHE_KEY_SALT', 'oddperience.com');
 ##edit cronjob
 
 */5 * * * * wget -q -O - 'https://websiteedit.com/wp-cron.php?doing_wp_cron' >/dev/null 2>&1
+
+#missing redis
+
+
+##missing imagick
+apt install php81rc-pecl-imagick
+apt install lsphp81-imagick
+
