@@ -15,7 +15,7 @@ sudo apt install iputils-ping
 sudo apt install nano
 
 #update source maraidb
-sudo install apt-transport-https curl
+sudo apt install apt-transport-https curl
 sudo mkdir -p /etc/apt/keyrings
 sudo curl -o /etc/apt/keyrings/mariadb-keyring.pgp 'https://mariadb.org/mariadb_release_signing_key.pgp'
 tee -a /etc/apt/sources.list.d/mariadb.sources <<EOF
