@@ -1,6 +1,7 @@
 #!/bin/bash
 set -e
 
+sudo timedatectl set-timezone Asia/Bangkok
 #User task
 echo "$USER:thaigaming" | sudo chpasswd
 #sudo useradd idaemon
@@ -28,8 +29,8 @@ Signed-By: /etc/apt/keyrings/mariadb-keyring.pgp
 EOF
 
 #Essential setup
-sudo timedatectl set-timezone Asia/Bangkok
-sudo apt autoremove -y
+
+sudo apt clean && sudo apt autoremove -y
 sudo shutdown -r now
 
 #echo " DONE "
