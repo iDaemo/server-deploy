@@ -19,3 +19,6 @@ sh <(curl <https://raw.githubusercontent.com/usmannasir/cyberpanel/stable/preUpg
 sh <(curl <https://raw.githubusercontent.com/usmannasir/cyberpanel/stable/preUpgrade.sh> || wget -O - <https://raw.githubusercontent.com/usmannasir/cyberpanel/stable/preUpgrade.sh>)
 
 ```
+
+Post install
+https://www.linuxcapable.com/how-to-configure-unattended-upgrades-on-ubuntu-linux/
