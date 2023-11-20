@@ -16,7 +16,6 @@ curl -LJO <https://raw.githubusercontent.com/iDaemo/server-deploy/master/cyberpa
 sh <(curl <https://raw.githubusercontent.com/usmannasir/cyberpanel/stable/preUpgrade.sh> || wget -O - <https://raw.githubusercontent.com/usmannasir/cyberpanel/stable/preUpgrade.sh>)
 
 ```
-
 sh <(curl <https://raw.githubusercontent.com/usmannasir/cyberpanel/stable/preUpgrade.sh> || wget -O - <https://raw.githubusercontent.com/usmannasir/cyberpanel/stable/preUpgrade.sh>)
 
 ```
