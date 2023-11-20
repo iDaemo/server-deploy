@@ -31,3 +31,5 @@ sudo apt install lsphp81-opcache
 service lsws restart
 ##checkiing if it working
 /usr/local/lsws/lsphp81/bin/php -i | grep -i JIT
+
+asdasd
