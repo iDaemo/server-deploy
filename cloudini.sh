@@ -14,6 +14,7 @@ sudo apt update -y && sudo apt upgrade -y
 sudo apt install cron
 sudo apt install iputils-ping 
 sudo apt install nano
+sudo apt install unattended-upgrades
 
 #update source maraidb
 sudo apt install apt-transport-https curl

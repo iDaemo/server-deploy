@@ -32,4 +32,6 @@ service lsws restart
 ##checkiing if it working
 /usr/local/lsws/lsphp81/bin/php -i | grep -i JIT
 
-asdasd
+asdasdsdcasdf
+asdfasdf
+asdfasdf
