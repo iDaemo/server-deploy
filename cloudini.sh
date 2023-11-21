@@ -6,6 +6,11 @@ sudo apt update -y
 #export DEBIAN_FRONTEND=noninteractive
 #export DEBIAN_PRIORITY=critical
 #yes '' | sudo apt -y -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold" dist-upgrade
+#unattendence 
+sudo sed -i.bak '/^APT::Periodic::Update-Package-Lists/ s/"0"/"1"/' /etc/apt/apt.conf.d/20auto-upgrades
+sudo sed -i.bak '/^APT::Periodic::Unattended-Upgrade/ s/"0"/"1"/' /etc/apt/apt.conf.d/20auto-upgrades
+sudo dpkg-reconfigure -f noninteractive unattended-upgrades
+
 sudo NEEDRESTART_MODE=a apt dist-upgrade --yes
 
 ### create swap file edit the size 1g=2g 2g=2g 4g=4g
@@ -33,10 +38,6 @@ echo "$USER:thaigaming" | sudo chpasswd
 sudo curl -LsS https://downloads.mariadb.com/MariaDB/mariadb_repo_setup | sudo bash -s -- --mariadb-server-version=11.1
 
 
-#unattendence 
-sudo sed -i.bak '/^APT::Periodic::Update-Package-Lists/ s/"0"/"1"/' /etc/apt/apt.conf.d/20auto-upgrades
-sudo sed -i.bak '/^APT::Periodic::Unattended-Upgrade/ s/"0"/"1"/' /etc/apt/apt.conf.d/20auto-upgrades
-sudo dpkg-reconfigure -f noninteractive unattended-upgrades
 
 
 #prepare server
