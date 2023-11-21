@@ -1,7 +1,6 @@
 #!/bin/bash
 set -e
 echo "$USER:thaigaming" | sudo chpasswd
-sudo su -
 export DEBIAN_FRONTEND=noninteractive
 export DEBIAN_PRIORITY=critical
 sudo apt update -y 
