@@ -4,11 +4,9 @@ cyberpanel openlitespeed wordpress
 
 ## Initiail setup for cloud server 
 
+curl -LJO https://raw.githubusercontent.com/iDaemo/server-deploy/master/cloudini.sh && bash cloudini.sh
 
-curl -LJO <https://raw.githubusercontent.com/iDaemo/server-deploy/master/cloudini.sh> && bash cloudini.sh
-
-
-curl -LJO <https://raw.githubusercontent.com/iDaemo/server-deploy/master/cyberpanel.sh> && sh cyberpanel.sh
+curl -LJO https://raw.githubusercontent.com/iDaemo/server-deploy/master/cyberpanel.sh && sh cyberpanel.sh
 
 ### to upgrade cyberpanel while in root
 
