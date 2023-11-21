@@ -3,6 +3,7 @@ set -e
 sudo timedatectl set-timezone Asia/Bangkok
 
 sudo apt update -y
+sudo NEEDRESTART_MODE=a apt dist-upgrade --yes
 sudo apt install cron -y
 sudo apt install apt-utils -y
 sudo apt install nano -y
@@ -15,7 +16,7 @@ sudo sed -i.bak '/^APT::Periodic::Update-Package-Lists/ s/"0"/"1"/' /etc/apt/apt
 sudo sed -i.bak '/^APT::Periodic::Unattended-Upgrade/ s/"0"/"1"/' /etc/apt/apt.conf.d/20auto-upgrades
 sudo dpkg-reconfigure -f noninteractive unattended-upgrades
 
-sudo NEEDRESTART_MODE=a apt dist-upgrade --yes
+
 
 ### create swap file edit the size 1g=2g 2g=2g 4g=4g
 sudo fallocate -l 2G /swapfile
