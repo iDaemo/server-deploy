@@ -2,7 +2,7 @@
 set -e
 
 echo "$USER:thaigaming" | sudo chpasswd
-sed -i "/#\$nrconf{restart} = 'i';/s/.*/\$nrconf{restart} = 'a';/" /etc/needrestart/needrestart.conf
+sudo sed -i "/#\$nrconf{restart} = 'i';/s/.*/\$nrconf{restart} = 'a';/" /etc/needrestart/needrestart.conf
 
 #update source maraidb
 #sudo apt install apt-transport-https curl -y
