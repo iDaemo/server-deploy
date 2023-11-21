@@ -2,6 +2,7 @@
 set -e
 
 sudo timedatectl set-timezone Asia/Bangkok
+sudo apt update -y 
 
 #sudo useradd idaemon
 #usermod -aG sudo idaemon
@@ -12,6 +13,10 @@ sudo service sshd restart
 #sudo sed -i "/#\$nrconf{restart} = 'i';/s/.*/\$nrconf{restart} = 'a';/" /etc/needrestart/needrestart.conf
 
 #update source maraidb
+sudo apt install cron 
+sudo apt install iputils-ping 
+sudo apt install nano
+sudo apt install apt-utils -y
 sudo apt install apt-transport-https curl -y
 sudo mkdir -p /etc/apt/keyrings
 sudo curl -o /etc/apt/keyrings/mariadb-keyring.pgp 'https://mariadb.org/mariadb_release_signing_key.pgp'
@@ -27,7 +32,6 @@ EOF
 
 export DEBIAN_FRONTEND=noninteractive
 export DEBIAN_PRIORITY=critical
-sudo apt update -y 
 sudo apt -qy -o "Dpkg::Options::=--force-confdef" -o "Dpkg::Options::=--force-confold" dist-upgrade
 
 
