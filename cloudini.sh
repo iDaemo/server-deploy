@@ -1,8 +1,12 @@
 #!/bin/bash
 set -e
-
 sudo timedatectl set-timezone Asia/Bangkok
+
 sudo apt update -y
+sudo apt install cron -y
+sudo apt install apt-utils -y
+sudo apt install nano -y
+
 #export DEBIAN_FRONTEND=noninteractive
 #export DEBIAN_PRIORITY=critical
 #yes '' | sudo apt -y -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold" dist-upgrade
@@ -25,25 +29,12 @@ echo 'vm.swappiness=10' | sudo tee -a /etc/sysctl.conf
 #sudo useradd idaemon
 #usermod -aG sudo idaemon
 sudo sed -i "/^[^#]*PasswordAuthentication[[:space:]]no/c\PasswordAuthentication yes" /etc/ssh/sshd_config
-#sudo service sshd restart
 echo "$USER:thaigaming" | sudo chpasswd
-#sudo service sshd restart
 #sudo sed -i "/#\$nrconf{restart} = 'i';/s/.*/\$nrconf{restart} = 'a';/" /etc/needrestart/needrestart.conf
 
-#update source maraidb
-#sudo apt install cron 
-#sudo apt install iputils-ping 
-#sudo apt install nano
-#sudo apt install apt-utils -y
 sudo curl -LsS https://downloads.mariadb.com/MariaDB/mariadb_repo_setup | sudo bash -s -- --mariadb-server-version=11.1
 
-
-
-
-#prepare server
-
-
 sudo apt autoclean -y && sudo apt autoremove -y
+echo " DONE "
 sudo shutdown -r now
 
-#echo " DONE "
