@@ -1,7 +1,14 @@
 #!/bin/bash
 set -e
 
+sudo timedatectl set-timezone Asia/Bangkok
+
+#sudo useradd idaemon
+#usermod -aG sudo idaemon
+sudo sed -i "/^[^#]*PasswordAuthentication[[:space:]]no/c\PasswordAuthentication yes" /etc/ssh/sshd_config
+#sudo service sshd restart
 echo "$USER:thaigaming" | sudo chpasswd
+sudo service sshd restart
 #sudo sed -i "/#\$nrconf{restart} = 'i';/s/.*/\$nrconf{restart} = 'a';/" /etc/needrestart/needrestart.conf
 
 #update source maraidb
@@ -23,13 +30,8 @@ export DEBIAN_PRIORITY=critical
 sudo apt update -y 
 sudo apt -qy -o "Dpkg::Options::=--force-confdef" -o "Dpkg::Options::=--force-confold" dist-upgrade
 
-sudo timedatectl set-timezone Asia/Bangkok
-#User task
 
-#sudo useradd idaemon
-#usermod -aG sudo idaemon
-sudo sed -i "/^[^#]*PasswordAuthentication[[:space:]]no/c\PasswordAuthentication yes" /etc/ssh/sshd_config
-#sudo service sshd restart
+
 
 ### create swap file edit the size 1g=2g 2g=2g 4g=4g
 sudo fallocate -l 2G /swapfile
@@ -41,9 +43,9 @@ echo '/swapfile none swap sw 0 0' | sudo tee -a /etc/fstab
 echo 'vm.swappiness=10' | sudo tee -a /etc/sysctl.conf
 
 #unattendence 
-#sudo sed -i.bak '/^APT::Periodic::Update-Package-Lists/ s/"0"/"1"/' /etc/apt/apt.conf.d/20auto-upgrades
-#sudo sed -i.bak '/^APT::Periodic::Unattended-Upgrade/ s/"0"/"1"/' /etc/apt/apt.conf.d/20auto-upgrades
-#sudo dpkg-reconfigure -f noninteractive unattended-upgrades
+sudo sed -i.bak '/^APT::Periodic::Update-Package-Lists/ s/"0"/"1"/' /etc/apt/apt.conf.d/20auto-upgrades
+sudo sed -i.bak '/^APT::Periodic::Unattended-Upgrade/ s/"0"/"1"/' /etc/apt/apt.conf.d/20auto-upgrades
+sudo dpkg-reconfigure -f noninteractive unattended-upgrades
 
 
 #start to install thing
