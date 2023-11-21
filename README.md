@@ -22,3 +22,6 @@ sh <(curl <https://raw.githubusercontent.com/usmannasir/cyberpanel/stable/preUpg
 
 Post install
 https://www.linuxcapable.com/how-to-configure-unattended-upgrades-on-ubuntu-linux/
+https://linuxopsys.com/topics/ubuntu-automatic-updates
+
+

@@ -14,7 +14,11 @@ sudo apt update -y && sudo apt upgrade -y
 sudo apt install cron
 sudo apt install iputils-ping 
 sudo apt install nano
-sudo apt install unattended-upgrades
+
+#unattendence 
+sudo sed -i.bak '/^APT::Periodic::Update-Package-Lists/ s/"0"/"1"/' /etc/apt/apt.conf.d/20auto-upgrades
+sudo sed -i.bak '/^APT::Periodic::Unattended-Upgrade/ s/"0"/"1"/' /etc/apt/apt.conf.d/20auto-upgrades
+sudo dpkg-reconfigure -f noninteractive unattended-upgrades
 
 #update source maraidb
 sudo apt install apt-transport-https curl
@@ -28,8 +32,6 @@ Suites: jammy
 Components: main main/debug
 Signed-By: /etc/apt/keyrings/mariadb-keyring.pgp
 EOF
-
-#Essential setup
 
 sudo apt clean && sudo apt autoremove -y
 sudo shutdown -r now
