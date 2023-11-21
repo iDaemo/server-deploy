@@ -2,6 +2,22 @@
 set -e
 
 echo "$USER:thaigaming" | sudo chpasswd
+sed -i "/#\$nrconf{restart} = 'i';/s/.*/\$nrconf{restart} = 'a';/" /etc/needrestart/needrestart.conf
+
+#update source maraidb
+#sudo apt install apt-transport-https curl -y
+sudo mkdir -p /etc/apt/keyrings
+sudo curl -o /etc/apt/keyrings/mariadb-keyring.pgp 'https://mariadb.org/mariadb_release_signing_key.pgp'
+sudo tee -a /etc/apt/sources.list.d/mariadb.sources <<EOF
+X-Repolib-Name: MariaDB
+Types: deb
+URIs: https://download.nus.edu.sg/mirror/mariadb/repo/11.1/ubuntu
+Suites: jammy
+Components: main main/debug
+Signed-By: /etc/apt/keyrings/mariadb-keyring.pgp
+EOF
+
+
 export DEBIAN_FRONTEND=noninteractive
 export DEBIAN_PRIORITY=critical
 sudo apt update -y 
@@ -29,18 +45,6 @@ sudo sed -i.bak '/^APT::Periodic::Update-Package-Lists/ s/"0"/"1"/' /etc/apt/apt
 sudo sed -i.bak '/^APT::Periodic::Unattended-Upgrade/ s/"0"/"1"/' /etc/apt/apt.conf.d/20auto-upgrades
 sudo dpkg-reconfigure -f noninteractive unattended-upgrades
 
-#update source maraidb
-sudo apt install apt-transport-https curl -y
-sudo mkdir -p /etc/apt/keyrings
-sudo curl -o /etc/apt/keyrings/mariadb-keyring.pgp 'https://mariadb.org/mariadb_release_signing_key.pgp'
-tee -a /etc/apt/sources.list.d/mariadb.sources <<EOF
-X-Repolib-Name: MariaDB
-Types: deb
-URIs: https://download.nus.edu.sg/mirror/mariadb/repo/11.1/ubuntu
-Suites: jammy
-Components: main main/debug
-Signed-By: /etc/apt/keyrings/mariadb-keyring.pgp
-EOF
 
 #start to install thing
 #sudo apt install cron
