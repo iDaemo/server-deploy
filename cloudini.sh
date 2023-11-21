@@ -17,25 +17,12 @@ sudo apt install cron
 sudo apt install iputils-ping 
 sudo apt install nano
 sudo apt install apt-utils -y
-sudo apt install apt-transport-https curl -y
-sudo mkdir -p /etc/apt/keyrings
-sudo curl -o /etc/apt/keyrings/mariadb-keyring.pgp 'https://mariadb.org/mariadb_release_signing_key.pgp'
-sudo tee -a /etc/apt/sources.list.d/mariadb.sources <<EOF
-X-Repolib-Name: MariaDB
-Types: deb
-URIs: https://download.nus.edu.sg/mirror/mariadb/repo/11.1/ubuntu
-Suites: jammy
-Components: main main/debug
-Signed-By: /etc/apt/keyrings/mariadb-keyring.pgp
-EOF
-
-
-export DEBIAN_FRONTEND=noninteractive
-export DEBIAN_PRIORITY=critical
-sudo apt -qy -o "Dpkg::Options::=--force-confdef" -o "Dpkg::Options::=--force-confold" dist-upgrade
-
-
-
+sudo apt install software-properties-common gnupg2 -y
+sudo apt-key adv --fetch-keys 'https://mariadb.org/mariadb_release_signing_key.asc'
+#mariadb10.8
+#sudo add-apt-repository 'deb [arch=amd64] http://mariadb.mirror.globo.tech/repo/10.8/ubuntu jammy main'
+#mariadb11.1
+sudo add-apt-repository 'deb [arch=amd64] https://mirror.djvg.sg/mariadb/repo/11.1/ubuntu jammy main'
 
 ### create swap file edit the size 1g=2g 2g=2g 4g=4g
 sudo fallocate -l 2G /swapfile
@@ -57,6 +44,10 @@ sudo dpkg-reconfigure -f noninteractive unattended-upgrades
 #sudo apt install iputils-ping 
 #sudo apt install nano
 #prepare server
+sudo apt update -y
+export DEBIAN_FRONTEND=noninteractive
+export DEBIAN_PRIORITY=critical
+sudo apt -qy -o "Dpkg::Options::=--force-confdef" -o "Dpkg::Options::=--force-confold" dist-upgrade
 
 sudo apt autoclean -y && sudo apt autoremove -y
 sudo shutdown -r now
