@@ -1,5 +1,6 @@
 #!/bin/bash
 set -e
+
 echo "$USER:thaigaming" | sudo chpasswd
 export DEBIAN_FRONTEND=noninteractive
 export DEBIAN_PRIORITY=critical
