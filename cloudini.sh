@@ -20,7 +20,7 @@ sudo fallocate -l 2G /swapfile
 sudo chmod 600 /swapfile
 sudo mkswap /swapfile
 sudo swapon /swapfile
-cp /etc/fstab /etc/fstab_$(date +%Y%m%d%H%M%S)
+sudo cp /etc/fstab /etc/fstab_$(date +%Y%m%d%H%M%S)
 echo '/swapfile none swap sw 0 0' | sudo tee -a /etc/fstab
 echo 'vm.swappiness=10' | sudo tee -a /etc/sysctl.conf
 
