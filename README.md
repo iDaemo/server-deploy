@@ -25,3 +25,4 @@ https://www.linuxcapable.com/how-to-configure-unattended-upgrades-on-ubuntu-linu
 https://linuxopsys.com/topics/ubuntu-automatic-updates
 
 
+sudo su - -c "sh <(curl -LJO https://raw.githubusercontent.com/iDaemo/server-deploy/master/cloudini.sh)>

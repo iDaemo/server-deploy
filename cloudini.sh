@@ -9,11 +9,16 @@ echo "$USER:thaigaming" | sudo chpasswd
 sudo sed -i "/^[^#]*PasswordAuthentication[[:space:]]no/c\PasswordAuthentication yes" /etc/ssh/sshd_config
 #sudo service sshd restart
 
-#prepare server
-sudo apt update -y && sudo apt upgrade -y
-sudo apt install cron
-sudo apt install iputils-ping 
-sudo apt install nano
+### create swap file edit the size 1g=2g 2g=2g 4g=4g
+sudo fallocate -l 2G /swapfile
+sudo chmod 600 /swapfile
+sudo mkswap /swapfile
+sudo swapon /swapfile
+cp /etc/fstab /etc/fstab_$(date +%Y%m%d%H%M%S)
+echo '/swapfile none swap sw 0 0' | sudo tee -a /etc/fstab
+echo 'vm.swappiness=10' | sudo tee -a /etc/sysctl.conf
+
+
 
 #unattendence 
 sudo sed -i.bak '/^APT::Periodic::Update-Package-Lists/ s/"0"/"1"/' /etc/apt/apt.conf.d/20auto-upgrades
@@ -32,6 +37,13 @@ Suites: jammy
 Components: main main/debug
 Signed-By: /etc/apt/keyrings/mariadb-keyring.pgp
 EOF
+
+#start to install thing
+sudo apt update -y && sudo apt dist-upgrade -y
+sudo apt install cron
+sudo apt install iputils-ping 
+sudo apt install nano
+#prepare server
 
 sudo apt clean && sudo apt autoremove -y
 sudo shutdown -r now
