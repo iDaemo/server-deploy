@@ -26,7 +26,7 @@ sudo sed -i.bak '/^APT::Periodic::Unattended-Upgrade/ s/"0"/"1"/' /etc/apt/apt.c
 sudo dpkg-reconfigure -f noninteractive unattended-upgrades
 
 #update source maraidb
-sudo apt install apt-transport-https curl
+sudo apt install apt-transport-https curl -y
 sudo mkdir -p /etc/apt/keyrings
 sudo curl -o /etc/apt/keyrings/mariadb-keyring.pgp 'https://mariadb.org/mariadb_release_signing_key.pgp'
 tee -a /etc/apt/sources.list.d/mariadb.sources <<EOF
