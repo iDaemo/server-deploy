@@ -5,7 +5,7 @@ sudo timedatectl set-timezone Asia/Bangkok
 sudo apt update -y
 sudo NEEDRESTART_MODE=a apt dist-upgrade --yes
 sudo apt install cron -y
-sudo apt install apt-utils -y
+sudo NEEDRESTART_MODE=a apt install apt-utils -y
 sudo apt install nano -y
 
 #export DEBIAN_FRONTEND=noninteractive
