@@ -3,7 +3,7 @@ set -e
 sudo timedatectl set-timezone Asia/Bangkok
 
 sudo apt update -y
-sudo NEEDRESTART_MODE=a apt dist-upgrade --yes
+sudo NEEDRESTART_MODE=a apt dist-upgrade --yes -q --allow-remove-essential --allow-change-held-packages
 sudo NEEDRESTART_MODE=a apt install cron -y
 sudo NEEDRESTART_MODE=a apt install apt-utils -y
 sudo NEEDRESTART_MODE=a apt install nano -y
