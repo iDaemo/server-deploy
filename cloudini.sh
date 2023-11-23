@@ -8,10 +8,6 @@ sudo NEEDRESTART_MODE=a apt install cron -y
 sudo NEEDRESTART_MODE=a apt install apt-utils -y
 sudo NEEDRESTART_MODE=a apt install nano -y
 
-#export DEBIAN_FRONTEND=noninteractive
-#export DEBIAN_PRIORITY=critical
-#yes '' | sudo apt -y -o Dpkg::Options::="--force-confdef" -o Dpkg::Options::="--force-confold" dist-upgrade
-#unattendence 
 sudo sed -i.bak '/^APT::Periodic::Update-Package-Lists/ s/"0"/"1"/' /etc/apt/apt.conf.d/20auto-upgrades
 sudo sed -i.bak '/^APT::Periodic::Unattended-Upgrade/ s/"0"/"1"/' /etc/apt/apt.conf.d/20auto-upgrades
 sudo dpkg-reconfigure -f noninteractive unattended-upgrades
